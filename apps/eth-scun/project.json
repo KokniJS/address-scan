@@ -1,0 +1,24 @@
+{
+  "name": "eth-scun",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/eth-scun/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "eth-scun:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "eth-scun:build:development"
+        },
+        "production": {
+          "buildTarget": "eth-scun:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
