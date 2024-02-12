@@ -8,7 +8,7 @@ export class CronService {
   private logger = new Logger('Cron');
   constructor(private readonly transactionService: TransactionService) {}
 
-  // @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_MINUTE)
   async createSitemap() {
     await this.transactionService.fetchTransactions();
     this.logger.debug('Finished job fetch transactions');
