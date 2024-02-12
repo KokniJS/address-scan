@@ -1,0 +1,36 @@
+{
+  "name": "eth-scan",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/eth-scan/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "eth-scan:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "eth-scan:build:development"
+        },
+        "production": {
+          "buildTarget": "eth-scan:build:production"
+        }
+      }
+    },
+    "generate-migration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run eth-scan:typeorm-cli -- -- migration:generate -d ./src/configs/db.migration.ts ./src/migrations/$N"
+      }
+    },
+    "typeorm-cli": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli"
+      }
+    }
+  },
+  "tags": []
+}
