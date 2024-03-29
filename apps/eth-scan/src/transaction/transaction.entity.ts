@@ -4,6 +4,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  Index,
 } from 'typeorm';
 
 @Entity()
@@ -11,22 +12,29 @@ export class Transaction {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
+  
   @Column()
+  @Index()  
   from: string;
 
   @Column()
+  @Index()
   to: string;
 
   @Column()
+  @Index()
   hexValue: string;
 
   @Column()
+  @Index()
   hexBlockNumber: string;
 
   @Column()
+  @Index()
   value: string;
 
   @Column()
+  @Index()
   blockNumber: string;
 
   @CreateDateColumn({
